@@ -1,0 +1,235 @@
+/* ============================================================
+   HIGH-CONTRAST PROFESSIONAL PINK & RED ROSE PALETTE SETUP
+   ============================================================ */
+:root {
+    --bg-color: #fdf2f8;            /* Rich soft pink background */
+    --card-bg: #ffffff;             /* Crisp white containers */
+    --border: #f472b6;               /* Clear, high-contrast pink border */
+    --text-primary: #1f0813;        /* Deep berry-black for ultra-high text contrast */
+    --text-secondary: #501d36;      /* Rich dark plum for secondary text */
+    --accent: #be185d;              /* Vibrant deep magenta-rose */
+    --accent-hover: #9d174d;        /* Deeper shade for hover states */
+    --accent-light: #fbcfe8;        /* Vivid pink highlight tint */
+    --radius: 16px;                 /* Rounder, soft card edges */
+    --shadow: 0 4px 20px -2px rgba(190, 24, 93, 0.15); 
+    --shadow-hover: 0 10px 25px -3px rgba(190, 24, 93, 0.25);
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    background-color: var(--bg-color);
+    /* Very subtle tint overlay (0.25 opacity) to keep the roses sharp and realistic */
+    background-image: linear-gradient(rgba(253, 242, 248, 0.25), rgba(253, 242, 248, 0.05)), 
+                      url('rosebackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2.5rem 1rem;
+    min-height: 100vh;
+}
+
+/* Headings: High-End Editorial Style */
+h1, h2, h3, #about-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+}
+
+/* Common Layout Containers */
+.site-header, .links-section, .feature-card, .site-footer {
+    width: 100%;
+    max-width: 680px;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.site-header:hover, .feature-card:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+/* Header Elements */
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.profile-info h1 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+}
+
+#avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 4px #ffffff, 0 0 0 7px var(--border);
+}
+
+#user-bio { 
+    color: var(--text-secondary); 
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Links Section */
+#social-links-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+}
+
+#social-links-list a {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.7rem 1.3rem;
+    background: #fce7f3;
+    border: 1.5px solid var(--border);
+    border-radius: 30px; /* Pill-shaped buttons */
+    transition: all 0.25s ease;
+}
+
+#social-links-list a:hover {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(190, 24, 93, 0.35);
+}
+
+#social-links-list img { 
+    width: 20px; 
+    height: 20px; 
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.slide-display { flex: 1; }
+
+#carousel-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: calc(var(--radius) - 4px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+#carousel-caption {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: 0.85rem;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.arrow {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    color: var(--accent);
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.6rem 0.9rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: all 0.25s ease;
+}
+
+.arrow:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* About Section & Paragraph Formatting */
+#about-section {
+    text-align: left;
+}
+
+#about-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    font-size: 1.75rem;
+}
+
+.about-content p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+.about-content strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* Footer / Buttons */
+.site-footer h3 {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-link {
+    color: #ffffff;
+    background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
+    border: none;
+    padding: 0.8rem 1.6rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 14px rgba(219, 39, 119, 0.35);
+    transition: all 0.25s ease;
+}
+
+.btn-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(219, 39, 119, 0.45);
+}

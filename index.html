@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josilene (Josie) Kashindi</title>
+    <link rel="stylesheet" href="styler.css">
+    <style>
+        /* e-Transfer Custom Button Styling */
+        .btn-etransfer {
+            cursor: pointer;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f0f9ff;
+            color: var(--accent, #0284c7);
+            border: 1px solid #bae6fd;
+            font-family: inherit;
+        }
+
+        .btn-etransfer:hover {
+            background: var(--accent-light, #e0f2fe);
+            border-color: var(--accent, #0284c7);
+            color: var(--accent-hover, #0369a1);
+        }
+
+        .etransfer-detail {
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        /* Modal Overlay Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--card-bg, #ffffff);
+            border-radius: var(--radius, 12px);
+            padding: 1.5rem;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal-card h3 {
+            color: var(--text-primary, #0f172a);
+            font-size: 1.25rem;
+        }
+
+        .modal-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .modal-field label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary, #475569);
+        }
+
+        .modal-field input {
+            padding: 0.6rem 0.8rem;
+            border: 1px solid var(--border, #e2e8f0);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .modal-field input:focus {
+            border-color: var(--accent, #0284c7);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .btn-modal-submit {
+            flex: 2;
+            background: var(--accent, #0284c7);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-modal-submit:hover {
+            background: var(--accent-hover, #0369a1);
+        }
+
+        .btn-modal-cancel {
+            flex: 1;
+            background: #f1f5f9;
+            color: var(--text-secondary, #475569);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Brand -->
+    <header class="site-header">
+        <div class="profile-info">
+            <img id="avatar" src="" alt="Profile Picture">
+            <h1 id="user-name"></h1>
+        </div>
+        <p id="user-bio"></p>
+    </header>
+
+    <!-- Navigation / External Links -->
+    <nav class="links-section">
+        <ul id="social-links-list">
+            <!-- Dynamic links load here automatically -->
+        </ul>
+    </nav>
+
+    <!-- Main Feature: Image Carousel / Showcase -->
+    <main class="feature-card">
+        <div class="carousel">
+            <button class="arrow" id="prev-btn" aria-label="Previous">&#10094;</button>
+            <div class="slide-display">
+                <img id="carousel-img" src="" alt="Showcase Image">
+                <p id="carousel-caption"></p>
+            </div>
+            <button class="arrow" id="next-btn" aria-label="Next">&#10095;</button>
+        </div>
+    </main>
+
+    <!-- Flexible Feature Block -->
+    <section class="feature-card" id="about-section">
+    <h2 id="about-title">About Me</h2>
+    <div class="about-content">
+        <p>My name is Josilene Finga Zawadi Kashindi, but most people know me as Josie. I was born in Uvira, Democratic Republic of Congo, where I spent my early childhood surrounded by a strong sense of family, culture, and resilience.</p>
+        
+        <p>At the age of nine, my life took a new direction when my family and I moved to Nairobi, Kenya, where I experienced both transition and growth. During this time, by the grace of God, my brother adopted me, providing stability and support as we adjusted to a new way of life.</p>
+        
+        <p>We were later given the opportunity to rebuild our lives in Calgary, Alberta, Canada, a moment that marked a powerful turning point in my journey. Canada became a place of healing, hope, and new beginnings, and I am deeply proud to call it home.</p>
+        
+        <p>As I continued to grow, I developed a deep appreciation for the peace and beauty of the prairies, which eventually led me to <strong>Saskatoon, Saskatchewan—the Land of Living Skies—</strong>where I now proudly reside. I enjoy research, reading, learning, meeting new people, gardening, road trips, long walks, and embracing life’s simple joys.</p>
+        
+        <p>My journey across continents has shaped me into a woman of faith, resilience, and purpose. I am a devoted mother, a business sales professional, an aspiring runway model, and the proud Ms. of Saskatoon 2026. I also serve on the Refuge Advisory Table and volunteer with various organizations and non-profits, dedicating my time to community service, newcomer support, and initiatives that uplift vulnerable and marginalized groups. Above all, I am committed to being a voice for empowerment, inclusion, and community building.</p>
+        
+        <p>In alignment with this mission, I am the founder of the Amani Congo Cultural Community of Saskatchewan, where I work to bridge the integration gap for visible minorities and support newcomers in building meaningful lives in Canada, particularly within the Congolese community. My passion lies in creating spaces where people from all backgrounds feel seen, valued, supported, and inspired to thrive.</p>
+        
+        <p>I aspire to inspire young girls to believe in themselves, embrace their unique beauty, and recognize the strength within their abilities and skills.</p>
+        
+        <p>I stand for unity, strength, and compassion, and I believe true beauty shines brightest when it uplifts others and helps build communities where everyone belongs.</p>
+    </div>
+</section>
+
+<p id="about-text"> </p>
+    </section>
+
+    <!-- Support / Footer Section -->
+    <footer class="site-footer">
+        <h3>Support & Contact</h3>
+        <div id="footer-links" class="button-group">
+            <!-- Dynamic donation/contact buttons load here -->
+        </div>
+    </footer>
+
+    <!-- Interactive e-Transfer Modal -->
+    <div id="etransfer-modal" class="modal-overlay">
+        <div class="modal-card">
+            <h3>e-Transfer Payment Details</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary, #475569);">
+                Set the transfer amount and item name below to open your e-Transfer details automatically.
+            </p>
+            
+            <div class="modal-field">
+                <label for="etransfer-amount">Amount Needed ($ CAD)</label>
+                <input type="number" id="etransfer-amount" min="1" step="0.50" value="10.00">
+            </div>
+
+            <div class="modal-field">
+                <label for="etransfer-item">Download / Reference Note</label>
+                <input type="text" id="etransfer-item" placeholder="e.g. Asset Pack Download">
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-modal-cancel" id="close-modal-btn">Cancel</button>
+                <button type="button" class="btn-modal-submit" id="send-etransfer-btn">Send e-Transfer ➔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Config & Script -->
+    <script>
+        /* ============================================================
+           CONFIG: PROFILE & SITE DATA
+           ============================================================ */
+        const CONFIG = {
+            name: "Ms. of Saskatoon 2026 (Josie)",
+            title: "Ms. of Saskatoon 2026",
+            bio: "Josilene (Josie) Kashindi, Ms. of Saskatoon 2026, was selected to represent Saskatoon as a community leader, business professional, and founder of the Amani Congo Cultural Community of Saskatchewan. Born in the DRC and now based in Saskatoon, she is dedicated to empowering newcomers and inspiring young girls through leadership, faith, and service.",
+            avatar: "Images/MsOfSaskatoon2026ICON.jpeg",
+            
+            // Social links
+            links: [
+                { name: "YouTube", url: "https://youtube.com/@josilenekashindi?si=RlD9gZfuxrYIyI1F", icon: "YoutubeLogo.png" },
+                { name: "Instagram", url: "https://www.instagram.com/i__am_josiezawa", icon: "InstagramIcon.png" },
+                { name: "Facebook", url: "https://www.facebook.com/share/1EsPA8BUvT/?mibextid=wwXIfr", icon: "FacebookIcon.png" },
+                { name: "Tik Tok", url: "https://www.instagram.com/i__am_josiezawa", icon: "TikTokIcon.png" },
+                { name: "Community work", url: "https://www.instagram.com/amanicongo.sk?igsh=MTU2ZWMwdDlkZDJ2Nw==", icon: "Communitywork.jpg" }
+            ],
+
+            // Populated dynamically via gallery.json
+            gallery: [],
+
+            // Support & Donation Options
+            support: [
+                { 
+                    label: "Interac e-Transfer", 
+                    email: "josie.msofsaskatoon2026@gmail.com",
+                    type: "etransfer",
+                    defaultAmount: "25.00",
+                    downloadItem: "Donations"
+                }
+            ]
+        };
+
+        /* ============================================================
+           TEMPLATE RENDERER
+           ============================================================ */
+        document.getElementById('user-name').textContent = CONFIG.name;
+        document.getElementById('user-bio').textContent = CONFIG.bio;
+        document.getElementById('avatar').src = CONFIG.avatar;
+
+        // Render Links
+        const linksContainer = document.getElementById('social-links-list');
+        CONFIG.links.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="${item.url}" target="_blank" rel="noopener">
+                <img src="${item.icon}" alt="${item.name}"> ${item.name}
+            </a>`;
+            linksContainer.appendChild(li);
+        });
+
+        // Render Support Buttons
+        let currentEtransferConfig = null;
+        const footerContainer = document.getElementById('footer-links');
+
+        CONFIG.support.forEach(item => {
+            if (item.type === 'etransfer') {
+                currentEtransferConfig = item;
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'btn-link btn-etransfer';
+                button.innerHTML = `
+                    <span class="label-text">${item.label}</span>
+                    <span class="etransfer-detail">${item.email}</span>
+                `;
+                button.onclick = () => openEtransferModal(item);
+                footerContainer.appendChild(button);
+            } else {
+                const a = document.createElement('a');
+                a.className = 'btn-link';
+                a.href = item.url;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.textContent = item.label;
+                footerContainer.appendChild(a);
+            }
+        });
+
+        // Modal Controls & e-Transfer Handling
+        const modal = document.getElementById('etransfer-modal');
+        const amountInput = document.getElementById('etransfer-amount');
+        const itemInput = document.getElementById('etransfer-item');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const sendEtransferBtn = document.getElementById('send-etransfer-btn');
+
+        function openEtransferModal(config) {
+            if (config.defaultAmount) amountInput.value = config.defaultAmount;
+            if (config.downloadItem) itemInput.value = config.downloadItem;
+            modal.classList.add('active');
+        }
+
+        closeModalBtn.onclick = () => modal.classList.remove('active');
+
+        sendEtransferBtn.onclick = () => {
+            if (!currentEtransferConfig) return;
+
+            const amount = amountInput.value || "0.00";
+            const note = itemInput.value || "Download Request";
+            
+            // 1. Copy email to clipboard so user can easily paste in banking app
+            navigator.clipboard.writeText(currentEtransferConfig.email);
+
+            // 2. Open default mail client automatically with filled Subject and Body
+            const subject = encodeURIComponent(`Interac e-Transfer: $${amount} CAD for ${note}`);
+            const body = encodeURIComponent(
+                `Hello ${CONFIG.name},\n\n` +
+                `I am sending an Interac e-Transfer of $${amount} CAD for: ${note}.\n\n` +
+                `e-Transfer Email Address: ${currentEtransferConfig.email}\n` +
+                `(Email copied to clipboard automatically!)`
+            );
+
+            window.location.href = `mailto:${currentEtransferConfig.email}?subject=${subject}&body=${body}`;
+            
+            modal.classList.remove('active');
+        };
+
+        /* ============================================================
+           DYNAMIC GALLERY & CAROUSEL LOGIC
+           ============================================================ */
+        let currentIndex = 0;
+        const imgEl = document.getElementById('carousel-img');
+        const captionEl = document.getElementById('carousel-caption');
+
+        function updateCarousel(index) {
+            if (!CONFIG.gallery || CONFIG.gallery.length === 0) return;
+            imgEl.src = CONFIG.gallery[index].src;
+            captionEl.textContent = CONFIG.gallery[index].caption;
+        }
+
+        document.getElementById('prev-btn').onclick = () => {
+            if (!CONFIG.gallery || CONFIG.gallery.length === 0) return;
+            currentIndex = (currentIndex - 1 + CONFIG.gallery.length) % CONFIG.gallery.length;
+            updateCarousel(currentIndex);
+        };
+
+        document.getElementById('next-btn').onclick = () => {
+            if (!CONFIG.gallery || CONFIG.gallery.length === 0) return;
+            currentIndex = (currentIndex + 1) % CONFIG.gallery.length;
+            updateCarousel(currentIndex);
+        };
+
+        // Load images dynamically from gallery.json
+        fetch('gallery.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Could not load gallery.json');
+                }
+                return response.json();
+            })
+            .then(data => {
+                CONFIG.gallery = data;
+                updateCarousel(currentIndex);
+            })
+            .catch(error => {
+                console.error('Error fetching gallery:', error);
+            });
+    </script>
+</body>
+</html>
